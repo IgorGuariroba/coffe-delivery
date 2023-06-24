@@ -13,6 +13,9 @@ RUN npm install
 # Copie o restante dos arquivos do projeto
 COPY . .
 
+# Corrija automaticamente problemas de formatação com o Prettier
+RUN npx prettier --write .
+
 # Compila a aplicação
 RUN npm run build
 
