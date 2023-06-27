@@ -19,6 +19,9 @@ RUN npx prettier --write .
 # Compila a aplicação
 RUN npm run build
 
+# Muda para o usuário node
+USER node
+
 # Expõe a porta que a aplicação irá executar
 EXPOSE 3000
 
