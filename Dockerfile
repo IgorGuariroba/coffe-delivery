@@ -1,6 +1,8 @@
 # Defina a imagem base
 FROM node:16-alpine
 
+# Instale as dependências do Prisma
+RUN apk --no-cache add openssl libgcc zlib
 # Defina o diretório de trabalho no contêiner
 WORKDIR /app
 
@@ -19,6 +21,8 @@ RUN npx prettier --write .
 # Compila a aplicação
 RUN npm run build
 
+RUN chmod +x /app/start.sh
+
 # Muda para o usuário node
 USER node
 
@@ -26,4 +30,5 @@ USER node
 EXPOSE 3000
 
 # Comando para iniciar a aplicação
-CMD ["npm", "run", "dev"]
+CMD ["/app/start.sh"]
+
