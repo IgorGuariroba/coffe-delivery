@@ -28,6 +28,7 @@ export function ClaimUsernameForm() {
   })
 
   const router = useRouter()
+
   async function handlePreRegister(data: ClaimUsernameFormData) {
     const { username } = data
 
