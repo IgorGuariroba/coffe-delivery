@@ -1,4 +1,6 @@
 #!/bin/sh
+echo "Iniciando a aplicação..."
 
-npm run db-prisma
+npm install
+nohup npm run bd > bd.out 2>&1 &
 npm run dev

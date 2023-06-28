@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "bd-prisma": "npx prisma studio",
+    "bd": "npx prisma studio",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
