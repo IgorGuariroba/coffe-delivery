@@ -6,42 +6,33 @@ RUN apk --no-cache add openssl libgcc zlib
 
 RUN npm install -g npm@9.7.2
 
-# Muda a propriedade de todos os arquivos e diretórios para o usuário do Docker
-RUN chown -R node:node /tmp /root
+# Crie o usuário 'developer' e configure o diretório inicial
+RUN adduser -D developer
+
+# Mude para o usuário 'developer'
+USER developer
 
 # Defina o diretório de trabalho no contêiner
-WORKDIR /app
-
-USER node
+WORKDIR /home/developer/app
 
 # Copie o package.json e o package-lock.json
-COPY package*.json ./
+COPY --chown=developer package*.json ./
 
-USER root
-RUN chown -R node:node /app
-USER node
 # Instale as dependências
 RUN npm install
 
 # Copie o restante dos arquivos do projeto
-COPY . .
+COPY --chown=developer . .
 
 # Corrija automaticamente problemas de formatação com o Prettier
-USER root
-RUN chown -R node:node ./src
 RUN npx prettier --write ./src
-USER node
 
-USER root
 # Compila a aplicação
 RUN npm run build
-RUN chown -R node:node ./.next
-USER node
 
-USER root
+# Garanta que o script de inicialização tenha permissões de execução
+COPY --chown=developer start.sh .
 RUN chmod +x start.sh
-
-COPY start.sh .
 
 # Expõe a porta que a aplicação irá executar
 EXPOSE 3000

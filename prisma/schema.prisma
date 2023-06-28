@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = "postgresql://admin:admin@localhost:5432/coffee_delivery"
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model User {
