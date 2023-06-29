@@ -1,13 +1,13 @@
 import { Container, Form, FormError, Header } from './styles'
 import { Button, Heading, MultiStep, Text, TextInput } from '@ignite-ui/react'
 import { ArrowRight } from 'phosphor-react'
-import { useForm, useFormState } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { api } from '../../lib/axios'
-import { Axios, AxiosError } from 'axios'
+import { AxiosError } from 'axios'
 
 const registerFormSchema = z.object({
   username: z
