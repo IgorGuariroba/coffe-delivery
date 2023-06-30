@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "bd": "npx prisma studio",
+    "migrate": "npx prisma migrate dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
