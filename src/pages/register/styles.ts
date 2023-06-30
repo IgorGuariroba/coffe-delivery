@@ -1,7 +1,7 @@
 import { Box, Heading, styled, Text } from '@ignite-ui/react'
 
 export const Container = styled('main', {
-  maxWidth: '35,75rem',
+  maxWidth: '572px',
   margin: '$20 auto $4',
   padding: '0 $4',
 })
